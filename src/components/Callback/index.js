@@ -13,18 +13,23 @@ const Callback = ({ setAuthToken }) => {
     let url = new URL(url_string);
     let _code = url.searchParams.get("code");
 
-    // checking if _code is available
-    if (_code) {
-      getToken(_code)
-        .then((res) => {
-          setAuthToken(res);
-          setTokenToStorage(res);
-          navigate("/");
-        })
-        .catch((err) => console.log(err));
-    } else {
-      console.log("_code is not valid");
+    if (!_code) {
+      window.alert("Failed to Login");
+      navigate("/login");
+      return;
     }
+    getToken(_code)
+      .then((res) => {
+        setAuthToken(res);
+        setTokenToStorage(res);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        window.alert("Failed to Login");
+        navigate("/login");
+        return;
+      });
   }, []);
 
   return <Fallback />;

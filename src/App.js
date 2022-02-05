@@ -32,18 +32,16 @@ const AuthTokenContext = React.createContext();
 
 function App() {
   const [authToken, setAuthToken] = useState("");
-  const [visitLogin, setVisitLogin] = useState(false);
-  const [preloadedQuery, setPreloadedQuery] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("token") === null) {
-      if (window.location.pathname === "/login") return;
-      if (window.location.pathname === "/callback") return;
+    if (!localStorage.getItem("token")) {
+      if (window.location.pathname.startsWith("/login")) return;
+      if (window.location.pathname.startsWith("/callback")) return;
       window.location.pathname = "/login";
-    } else {
-      setAuthToken(JSON.parse(localStorage.getItem("token")));
+      return;
     }
-  }, [visitLogin]);
+    setAuthToken(localStorage.getItem("token"));
+  }, []);
 
   return (
     <RelayEnvironmentProvider environment={RelayEnvironment}>
@@ -57,12 +55,6 @@ function App() {
                   <Route
                     path="/callback"
                     element={<Callback setAuthToken={setAuthToken} />}
-                  />
-                  <Route
-                    path="/queryprocessing"
-                    element={
-                      <QueryProcessing setPreloadedQuery={setPreloadedQuery} />
-                    }
                   />
                   <Route path="/" element={<Home />} />
                   <Route path="/detail" element={<Detail />} />

@@ -5,7 +5,7 @@ import styles from "./styles";
 
 const Login = () => {
   const requestAuth = () => {
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&state="Test"`;
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&state=Test`;
   };
 
   return (
