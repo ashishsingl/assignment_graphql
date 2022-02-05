@@ -16,10 +16,12 @@ import Navbar from "../Navbar";
 
 const Home = () => {
   const authToken = useContext(AuthTokenContext);
-
-  const getUserName = loadQuery(RelayEnvironment, UserNameQuery, {
-    authToken,
-  });
+  let getUserName;
+  if (authToken) {
+    getUserName = loadQuery(RelayEnvironment, UserNameQuery, {
+      authToken,
+    });
+  }
 
   const data2 = usePreloadedQuery(UserNameQuery, getUserName);
   console.log("this is data in process query", data2);

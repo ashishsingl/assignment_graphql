@@ -4,6 +4,7 @@ import styles from "./styles";
 // let client_id = process.env.REACT_APP_CLIENT_ID;
 
 const Login = () => {
+  localStorage.clear();
   const requestAuth = () => {
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&state=Test`;
   };

@@ -3,7 +3,8 @@ import axios from "axios";
 // let client_id = process.env.REACT_APP_CLIENT_ID;
 // let client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
-const BASE_URL = process.env.REACT_APP_GITHUB_URL;
+// const BASE_URL = process.env.REACT_APP_GITHUB_URL;
+const BASE_URL = "/github/login/oauth/access_token";
 const REDIRECT_URI = `${window.location.origin}/callback`;
 
 const getToken = (code) => {
