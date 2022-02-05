@@ -3,8 +3,8 @@ import axios from "axios";
 // let client_id = process.env.REACT_APP_CLIENT_ID;
 // let client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
-const BASE_URL = "/github/login/oauth/access_token";
-// const REDIRECT_URI = `${window.location.origin}/callback`;
+const BASE_URL = process.env.REACT_APP_GITHUB_URL;
+const REDIRECT_URI = `${window.location.origin}/callback`;
 
 const getToken = (code) => {
   if (code.length !== 0) {
@@ -15,7 +15,7 @@ const getToken = (code) => {
         //   `${BASE_URL}?client_id=52640d70a2464cb8a4db&client_secret= 0270f1030f9eefa2a195c5e2db274826216112b2&code=${code}&redirect_uri=${REDIRECT_URI}`
         // )
         .post(
-          `${BASE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
+          `${BASE_URL}?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}&code=${code}&redirect_uri=${REDIRECT_URI}`
         )
         .then((res) => {
           console.log(res.data, "isme aaye ga access token");
