@@ -25,7 +25,8 @@
     "web-vitals": "^2.1.4",
     "babel-plugin-relay": "^13.0.2",
     "graphql": "^16.3.0",
-    "relay-compiler": "^13.0.2"
+    "relay-compiler": "^13.0.2",
+    "serve": "^13.0.2"
   },
   "relay": {
     "src": "./src/",
@@ -37,7 +38,8 @@
     ]
   },
   "scripts": {
-    "start": "export NODE_OPTIONS='--max-old-space-size=16384' && npm run relay && react-scripts start",
+    "start" : "serve -s ./build",
+    "dev": "export NODE_OPTIONS='--max-old-space-size=16384' && npm run relay && react-scripts start",
     "build": "npm run relay && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
