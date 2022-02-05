@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import getToken from "../../helper/getToken";
 import setTokenToStorage from "../../helper/setTokenToStorage";
+import Fallback from "../Fallback";
 
 const Callback = ({ setAuthToken }) => {
   const navigate = useNavigate();
@@ -26,6 +27,6 @@ const Callback = ({ setAuthToken }) => {
     }
   }, []);
 
-  return <Box>Loading...</Box>;
+  return <Fallback />;
 };
 export default Callback;
